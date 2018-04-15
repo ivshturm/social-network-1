@@ -1,0 +1,51 @@
+.item {
+    color: royalblue;
+}
+
+.footer {
+    padding-bottom: 15px;
+}
+
+.disabled {
+    opacity: 0.3;
+}
+
+.error, .message {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.error {
+    color: indianred;
+    background-color: #f2dede;
+    border: 1px solid #ebccd1;
+}
+
+.message {
+    color: midnightblue;
+    background-color: lightskyblue;
+    border: 1px solid lightskyblue;
+}
+
+.glyphicon {
+    cursor: pointer;
+}
+
+.navbar-brand{
+    color: white !important;
+}
+
+.footer {
+    min-width: 1000px;
+    margin: -100px auto 0;
+    height: 100px;
+    position: relative;
+    padding-right:10px;
+    padding-top:80px;
+    float:right;
+}
+
+.indent {
+    margin-top: 200px;
+}

@@ -40,7 +40,6 @@
                     <p>
                         <a href="/chat?id=${userTo.id}" onclick="javascript:event.target.port=8090" target="_blank">Чат</a>
                     </p>
-                    <%--<p><a href="localhost:8090/chat?id=${userTo.id}" target="_blank">Чат</a></p>--%>
                 </div>
             </div>
         </div>

@@ -15,6 +15,7 @@ import ru.sberbank.project.util.UserUtil;
 import ru.sberbank.project.util.exception.NotFoundException;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -89,6 +90,7 @@ public class ArticleServiceImpl implements ArticleService {
     public List<CommentTo> getAllCommentsForArticleById(int id) {
         return commentRepository.getAll(id).stream()
                 .map(CommentTo::new)
+                .sorted(Comparator.comparing(CommentTo::getDateTime))
                 .peek(commentTo -> commentTo.setUserTo(UserUtil.asTo(userRepository.get(commentTo.getUserId()))))
                 .collect(Collectors.toList());
     }

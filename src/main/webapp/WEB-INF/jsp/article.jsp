@@ -31,29 +31,54 @@
                     <h4>${article.text}</h4>
                 </div>
             </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+
             <div class="row">
                 <div class="col-xs-7" align="center">
 
                     <c:if test="${!empty comments}">
-                        <%--<table class="table table-hover">--%>
-
                             <c:forEach items="${comments}" var="comment">
-                                <p>
-                                Написал:
-                                ${comment.userTo.fullName}
-                                    <br>
-                                Дата:
-                                ${comment.dateTime}
-                                    <br>
-                                Комментарий:
-                                ${comment.text}
-                                </p>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <%--<h3></h3>--%>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-1">
+                                    <div class="thumbnail">
+                                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <strong>${comment.userTo.fullName}</strong> <span class="text-muted">Прокоментировал(а) ${comment.dateTime}</span>
+                                        </div>
+                                        <div class="panel-body">
+                                            ${comment.text}
+                                        </div>
+                                        <c:if test="${comment.userId == authUser.id}">
+                                            <div class="panel-body">
+                                                <a class="btn btn-outline-primary" href="/comment/delete/${comment.id}/${article.id}" methods="get">
+                                                    Удалить
+                                                </a>
+                                            </div>
+                                        </c:if>
+                                    </div>
+                                </div>
+
                             </c:forEach>
-                        <%--</table>--%>
                     </c:if>
 
                     <c:if test="${empty comments}">
-                        <h3>К этой статье нет комментариев</h3>
+                        <h4>К этой статье нет комментариев</h4>
                     </c:if>
 
                 </div>

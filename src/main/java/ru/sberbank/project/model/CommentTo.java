@@ -25,6 +25,7 @@ public class CommentTo {
     }
 
     public CommentTo(Comment comment) {
+        this.id = comment.getId();
         this.userId = comment.getUserId();
         this.articleId = comment.getArticleId();
         this.text = comment.getText();

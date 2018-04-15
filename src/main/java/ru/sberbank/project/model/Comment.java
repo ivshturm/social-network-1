@@ -38,6 +38,12 @@ public class Comment extends AbstractBaseEntity {
         this.dateTime = dateTime;
     }
 
+    public Comment(CommentTo commentTo) {
+        this.userId = commentTo.getUserId();
+        this.articleId = commentTo.getArticleId();
+        this.text = commentTo.getText();
+    }
+
     public int getUserId() {
         return userId;
     }

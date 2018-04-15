@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="topjava" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
@@ -18,27 +18,27 @@
                    charset="utf-8" accept-charset="UTF-8">
 
             Имя
-            <topjava:inputField label='${userName}' name="name"/>
+            <tag:inputField label='${userName}' name="name"/>
 
             Фамилия
-            <topjava:inputField label='${userLastName}' name="lastName"/>
+            <tag:inputField label='${userLastName}' name="lastName"/>
 
             email
-            <topjava:inputField label='${userEmail}' name="email"/>
+            <tag:inputField label='${userEmail}' name="email"/>
 
             Пароль
-            <topjava:inputField label='${userPassword}' name="password" inputType="password"/>
+            <tag:inputField label='${userPassword}' name="password" inputType="password"/>
 
             <p>Дата рождения</p>
 
             День
-            <topjava:inputField label='${birthdayDay}' name="birthdayDay" inputType="number"/>
+            <tag:inputField label='${birthdayDay}' name="birthdayDay" inputType="number"/>
 
             Месяц
-            <topjava:inputField label='${birthdayMonth}' name="birthdayMonth" inputType="number"/>
+            <tag:inputField label='${birthdayMonth}' name="birthdayMonth" inputType="number"/>
 
             Год
-            <topjava:inputField label='${birthdayYear}' name="birthdayYear" inputType="number"/>
+            <tag:inputField label='${birthdayYear}' name="birthdayYear" inputType="number"/>
 
             <div class="form-group">
                 <div class="col-xs-offset-2 col-xs-10">

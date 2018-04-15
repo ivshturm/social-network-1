@@ -42,7 +42,6 @@
 
                     <c:if test="${!empty comments}">
                             <c:forEach items="${comments}" var="comment">
-
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -73,57 +72,41 @@
                                         </c:if>
                                     </div>
                                 </div>
-
                             </c:forEach>
                     </c:if>
-
                     <c:if test="${empty comments}">
                         <h4>К этой статье нет комментариев</h4>
                     </c:if>
 
                 </div>
             </div>
+
         </div>
     </div>
 </div>
 
-<%--<div class="modal fade" id="editRow">--%>
-    <%--<div class="modal-dialog">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-header">--%>
-                <%--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>--%>
-                <%--<h2 class="modal-title" id="modalTitle"></h2>--%>
-            <%--</div>--%>
-            <%--<div class="modal-body">--%>
-                <%--<form class="form-horizontal" id="detailsForm">--%>
-                    <%--<input type="hidden" id="id" name="id">--%>
+        <form:form action="/comment/create/${article.id}" modelAttribute="comment">
+        <table align="center">
 
-                    <%--<div class="form-group">--%>
-                        <%--<label for="name" class="control-label col-xs-3">Название</label>--%>
+            <tr>
+                <td >
+                    <form:label path="text">
+                        Комментарий
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="text"/>
+                </td>
+            </tr>
 
-                        <%--<div class="col-xs-9">--%>
-                            <%--<input type="text" class="form-control" id="name" name="name"--%>
-                                   <%--placeholder="Название">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<label for="text" class="control-label col-xs-3">Текст</label>--%>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <input type="submit"
+                           value="Добавить комментарий"/>
+                </td>
+            </tr>
+        </table>
+        </form:form>
 
-                        <%--<div class="col-xs-9">--%>
-                            <%--<input type="text" class="form-control" id="text" name="text" placeholder="Текст">--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <%--<div class="form-group">--%>
-                        <%--<div class="col-xs-offset-3 col-xs-9">--%>
-                            <%--<button class="btn btn-primary" type="button" onclick="save()">--%>
-                                <%--<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>--%>
-                            <%--</button>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</form>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
 </body>
 </html>

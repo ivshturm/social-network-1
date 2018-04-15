@@ -4,9 +4,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.sberbank.project.model.Article;
+import ru.sberbank.project.model.Comment;
+import ru.sberbank.project.model.CommentTo;
 import ru.sberbank.project.security.AuthorizedUser;
 import ru.sberbank.project.util.UserUtil;
 
@@ -20,12 +23,20 @@ public class ArticleController extends AbstractArticleController {
         model.addAttribute("dateTime", article.getDateTime().toString().replace('T', ' '));
         model.addAttribute("comments", super.getAllCommentsForArticle(id));
         model.addAttribute("authUser", authorizedUser);
+        model.addAttribute("comment", new Comment());
         return "article";
     }
 
     @RequestMapping("/comment/delete/{id}/{articleId}")
     public String deleteCommentById(@PathVariable int id, @PathVariable int articleId) {
         super.deleteComment(id);
+        return "redirect:/article/{articleId}";
+    }
+
+    @RequestMapping("/comment/create/{articleId}")
+    public String createComment(@ModelAttribute Comment comment, @PathVariable int articleId) {
+        comment.setArticleId(articleId);
+        super.saveComment(comment);
         return "redirect:/article/{articleId}";
     }
 

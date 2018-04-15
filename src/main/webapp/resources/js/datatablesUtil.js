@@ -36,6 +36,12 @@ function add() {
     $("#editRow").modal();
 }
 
+function addComment() {
+    $("#modalTitle").html("Добавление комментария");
+    form.find(":input").val("");
+    $("#editRow").modal();
+}
+
 function updateRow(id) {
     $("#modalTitle").html("Редактирование вашей статьи");
     $.get(ajaxUrl + id, function (data) {
@@ -72,6 +78,16 @@ function save() {
     }).done(function () {
         $("#editRow").modal("hide");
         updateTable();
+    });
+}
+
+function saveComment() {
+    $.ajax({
+        type: "POST",
+        url: "/comment/create/{articleId}",
+        data: form.serialize()
+    }).done(function () {
+        $("#editRow").modal("hide");
     });
 }
 

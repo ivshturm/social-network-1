@@ -27,6 +27,11 @@ public abstract class AbstractUserController {
         return service.get(id);
     }
 
+    public List<User> getAll() {
+        log.info("getAll");
+        return service.getAll();
+    }
+
     public User create(User user) {
         log.info("create {}", user);
         checkNew(user);

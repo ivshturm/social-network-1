@@ -26,9 +26,36 @@
             <br>
             <hr align="center" width="300" color="blue"/>
             <br>
-            <div>
+            <div class="row">
                 <div class="col-xs-10">
                     <h4>${article.text}</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-7" align="center">
+
+                    <c:if test="${!empty comments}">
+                        <%--<table class="table table-hover">--%>
+
+                            <c:forEach items="${comments}" var="comment">
+                                <p>
+                                Написал:
+                                ${comment.userTo.fullName}
+                                    <br>
+                                Дата:
+                                ${comment.dateTime}
+                                    <br>
+                                Комментарий:
+                                ${comment.text}
+                                </p>
+                            </c:forEach>
+                        <%--</table>--%>
+                    </c:if>
+
+                    <c:if test="${empty comments}">
+                        <h3>К этой статье нет комментариев</h3>
+                    </c:if>
+
                 </div>
             </div>
         </div>

@@ -1,6 +1,8 @@
 package ru.sberbank.project.service;
 
 import ru.sberbank.project.model.Article;
+import ru.sberbank.project.model.Comment;
+import ru.sberbank.project.model.CommentTo;
 import ru.sberbank.project.util.exception.NotFoundException;
 
 import java.time.LocalDate;
@@ -24,4 +26,12 @@ public interface ArticleService {
     Article update(Article meal, int userId) throws NotFoundException;
 
     Article create(Article meal, int userId);
+
+    Comment saveComment(Comment comment, int userId);
+
+    boolean deleteComment(int id, int userId);
+
+    List<CommentTo> getAllCommentsForArticleById(int id);
+
+
 }

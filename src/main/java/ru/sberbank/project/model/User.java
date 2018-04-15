@@ -108,6 +108,10 @@ public class User extends AbstractBaseEntity {
         return this.lastName;
     }
 
+    public String getFullName() {
+        return this.name + " " + this.lastName;
+    }
+
     public String getEmail() {
         return email;
     }

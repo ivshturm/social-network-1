@@ -14,6 +14,7 @@ public class ArticleController extends AbstractArticleController {
         Article article = super.get(id);
         model.addAttribute("article", article);
         model.addAttribute("dateTime", article.getDateTime().toString().replace('T', ' '));
+        model.addAttribute("comments", super.getAllCommentsForArticle(id));
         return "article";
     }
 

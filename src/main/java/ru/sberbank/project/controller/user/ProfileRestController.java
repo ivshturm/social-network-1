@@ -4,11 +4,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import ru.sberbank.project.model.AbstractBaseEntity;
 import ru.sberbank.project.security.AuthorizedUser;
 import ru.sberbank.project.model.User;
 import ru.sberbank.project.model.UserTo;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(ProfileRestController.REST_URL)
@@ -29,6 +33,12 @@ public class ProfileRestController extends AbstractUserController {
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void update(@Valid @RequestBody UserTo userTo, @AuthenticationPrincipal AuthorizedUser authorizedUser) {
         super.update(userTo, authorizedUser.getId());
+    }
+
+    @RequestMapping(value = "/allusers", produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody Map<Integer ,String> getAllUsers() {
+        return super.getAll().stream()
+                .collect(Collectors.toMap (AbstractBaseEntity::getId, User::getFullName));
     }
 
 

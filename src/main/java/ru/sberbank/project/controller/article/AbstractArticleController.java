@@ -3,6 +3,8 @@ package ru.sberbank.project.controller.article;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.sberbank.project.model.Comment;
+import ru.sberbank.project.model.CommentTo;
 import ru.sberbank.project.security.AuthorizedUser;
 import ru.sberbank.project.model.Article;
 import ru.sberbank.project.service.ArticleService;
@@ -64,5 +66,22 @@ public abstract class AbstractArticleController {
         return service.getBetweenDates(
                 startDate != null ? startDate : DateTimeUtil.MIN_DATE,
                 endDate != null ? endDate : DateTimeUtil.MAX_DATE, userId);
+    }
+
+    public Comment saveComment(Comment comment) {
+        int userId = AuthorizedUser.id();
+        log.info("saveComment {} for user {}", comment, userId);
+        return service.saveComment(comment, userId);
+    }
+
+    public void deleteComment(int id) {
+        int userId = AuthorizedUser.id();
+        log.info("deleteComment {} for user {}", id, userId);
+        service.deleteComment(id, userId);
+    }
+
+    public List<CommentTo> getAllCommentsForArticle(int articleId) {
+        log.info("getAllCommentsForArticle {}", articleId);
+        return service.getAllCommentsForArticleById(articleId);
     }
 }

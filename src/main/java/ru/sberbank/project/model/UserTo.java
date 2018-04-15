@@ -84,6 +84,9 @@ public class UserTo implements Serializable, HasId {
         this.lastName = lastName;
     }
 
+    public String getFullName() {
+        return name + " " + lastName;
+    }
 
     public String getEmail() {
         return email;

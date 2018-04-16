@@ -41,8 +41,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article get(int id, int userId) throws NotFoundException {
-        return checkNotFoundWithId(articleRepository.get(id, userId), id);
+    public Article get(int id) throws NotFoundException {
+        return checkNotFoundWithId(articleRepository.get(id), id);
     }
 
     @Override

@@ -6,8 +6,7 @@
 <html>
 <jsp:include page="fragments/headTag.jsp"/>
 <body>
-<script type="text/javascript" src="resources/js/datatablesUtil.js" defer></script>
-<script type="text/javascript" src="resources/js/articlesDatatables.js" defer></script>
+<script type="text/javascript" src="resources/js/usersArticles.js" defer></script>
 <jsp:include page="fragments/bodyHeader.jsp"/>
 
 
@@ -53,45 +52,29 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<div class="modal fade" id="editRow">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h2 class="modal-title" id="modalTitle"></h2>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" id="detailsForm">
-                    <input type="hidden" id="id" name="id">
-
-                    <div class="form-group">
-                        <label for="name" class="control-label col-xs-3">Название</label>
-
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" id="name" name="name"
-                                   placeholder="Название">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="text" class="control-label col-xs-3">Текст</label>
-
-                        <div class="col-xs-9">
-                            <input type="text" class="form-control" id="text" name="text" placeholder="Текст">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-xs-offset-3 col-xs-9">
-                            <button class="btn btn-primary" type="button" onclick="save()">
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            </button>
-                        </div>
-                    </div>
-                </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-8" align="left">
+                    <h3>Публикации пользователя</h3>
+                </div>
             </div>
         </div>
+
+
+        <script type="text/javascript">
+            var userIdPage = "${user.id}";
+        </script>
+        <table class="table table-striped display" id="dataTable">
+            <thead>
+            <tr>
+                <th width="75%">Название</th>
+                <th>Дата публикации</th>
+                <th>Смотреть</th>
+            </tr>
+            </thead>
+        </table>
+
     </div>
 </div>
 </body>

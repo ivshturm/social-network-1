@@ -20,8 +20,8 @@ public interface ArticleFeignClient {
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     Article delete(@PathVariable("id") Integer id, @PathVariable("userId") Integer userId);
 
-    @RequestMapping(method = RequestMethod.GET, value = "/article/{id}/{userId}")
-    Article get(@PathVariable("id") Integer id, @PathVariable("userId") Integer userId);
+    @RequestMapping(method = RequestMethod.GET, value = "/article/{id}")
+    Article get(@PathVariable("id") Integer id);
 
     @RequestMapping(method = RequestMethod.GET, value = "/articles/{userId}")
     List<Article> getAll(@PathVariable("userId") Integer userId);

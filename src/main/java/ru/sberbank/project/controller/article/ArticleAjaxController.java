@@ -21,6 +21,12 @@ public class ArticleAjaxController extends AbstractArticleController {
     }
 
     @Override
+    @GetMapping(value = "/{id}/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Article> getAll(@PathVariable("id") int id) {
+        return super.getAll(id);
+    }
+
+    @Override
     @GetMapping(value = "/{id}")
     public Article get(@PathVariable("id") int id) {
         return super.get(id);

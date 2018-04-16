@@ -24,9 +24,8 @@ public abstract class AbstractArticleController {
     private ArticleService service;
 
     public Article get(int id) {
-        int userId = AuthorizedUser.id();
-        log.info("get article {} for user {}", id, userId);
-        return service.get(id, userId);
+        log.info("get article {} for user {}", id);
+        return service.get(id);
     }
 
     public void delete(int id) {
@@ -39,6 +38,11 @@ public abstract class AbstractArticleController {
         int userId = AuthorizedUser.id();
         log.info("getAll for user {}", userId);
         return service.getAll(userId);
+    }
+
+    public List<Article> getAll(int id) {
+        log.info("getAll for user {}", id);
+        return service.getAll(id);
     }
 
     public Article create(Article article) {

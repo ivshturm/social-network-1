@@ -41,6 +41,8 @@
                 <div class="col-xs-7" align="center">
 
                     <c:if test="${!empty comments}">
+                        <h4>Комментарии</h4>
+                        <br>
                             <c:forEach items="${comments}" var="comment">
                         <div class="container">
                             <div class="row">
@@ -76,8 +78,39 @@
                     </c:if>
                     <c:if test="${empty comments}">
                         <h4>К этой статье нет комментариев</h4>
+                        <h4>Вы можете написать первый комментарий</h4>
+                        <br>
                     </c:if>
 
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-7" align="center">
+                    <form:form action="/comment/create/${article.id}" modelAttribute="comment">
+                        <table class="table" align="center">
+
+                            <tr>
+                                <td >
+                                    <form:label path="text">
+                                        <h4>Комментарий</h4>
+                                    </form:label>
+                                </td>
+                                <td>
+                                    <form class="form-inline my-2 my-lg-0"></form>
+                                    <form:input path="text"/>
+                                    </form>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2" style="text-align: center">
+                                    <input type="submit" class="form-inline my-2 my-lg-0"
+                                           value="Добавить комментарий"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </form:form>
                 </div>
             </div>
 
@@ -85,28 +118,62 @@
     </div>
 </div>
 
-        <form:form action="/comment/create/${article.id}" modelAttribute="comment">
-        <table align="center">
+        <%--<form:form action="/comment/create/${article.id}" modelAttribute="comment">--%>
+        <%--<table class="table" align="center">--%>
 
-            <tr>
-                <td >
-                    <form:label path="text">
-                        Комментарий
-                    </form:label>
-                </td>
-                <td>
-                    <form:input path="text"/>
-                </td>
-            </tr>
+            <%--<tr>--%>
+                <%--<td >--%>
+                    <%--<form:label path="text">--%>
+                        <%--<h4>Комментарий</h4>--%>
+                    <%--</form:label>--%>
+                <%--</td>--%>
+                <%--<td>--%>
+                    <%--<form class="form-inline my-2 my-lg-0"></form>--%>
+                    <%--<form:input path="text"/>--%>
+                    <%--</form>--%>
+                <%--</td>--%>
+            <%--</tr>--%>
 
-            <tr>
-                <td colspan="2" style="text-align: center">
-                    <input type="submit"
-                           value="Добавить комментарий"/>
-                </td>
-            </tr>
-        </table>
-        </form:form>
+            <%--<tr>--%>
+                <%--<td colspan="2" style="text-align: center">--%>
+                    <%--<input type="submit" class="form-inline my-2 my-lg-0"--%>
+                           <%--value="Добавить комментарий"/>--%>
+                <%--</td>--%>
+            <%--</tr>--%>
+        <%--</table>--%>
+        <%--</form:form>--%>
+
+
+        <%--<table class="table">--%>
+            <%--<thead class="thead-dark">--%>
+            <%--<tr>--%>
+                <%--<th scope="col">#</th>--%>
+                <%--<th scope="col">First</th>--%>
+                <%--<th scope="col">Last</th>--%>
+                <%--<th scope="col">Handle</th>--%>
+            <%--</tr>--%>
+            <%--</thead>--%>
+            <%--<tbody>--%>
+            <%--<tr>--%>
+                <%--<th scope="row">1</th>--%>
+                <%--<td>Mark</td>--%>
+                <%--<td>Otto</td>--%>
+                <%--<td>@mdo</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<th scope="row">2</th>--%>
+                <%--<td>Jacob</td>--%>
+                <%--<td>Thornton</td>--%>
+                <%--<td>@fat</td>--%>
+            <%--</tr>--%>
+            <%--<tr>--%>
+                <%--<th scope="row">3</th>--%>
+                <%--<td>Larry</td>--%>
+                <%--<td>the Bird</td>--%>
+                <%--<td>@twitter</td>--%>
+            <%--</tr>--%>
+            <%--</tbody>--%>
+        <%--</table>--%>
 
 </body>
 </html>

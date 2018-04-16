@@ -17,7 +17,7 @@ public class LocalArticleRepository implements ArticleRepository {
 
     @Override
     public Article save(Article article, int userId) {
-        if (!article.isNew() && get(article.getId(), userId) == null) {
+        if (!article.isNew() && get(article.getId()) == null) {
             return null;
         }
         article.setUserId(userId);
@@ -30,8 +30,8 @@ public class LocalArticleRepository implements ArticleRepository {
     }
 
     @Override
-    public Article get(int id, int userId) {
-        return crudArticleRepository.findById(id).filter(article -> article.getUserId() == userId).orElse(null);
+    public Article get(int id) {
+        return crudArticleRepository.findById(id).orElse(null);
     }
 
     @Override

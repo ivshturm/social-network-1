@@ -11,7 +11,7 @@ public interface ArticleRepository {
 
     boolean delete(int id, int userId);
 
-    Article get(int id, int userId);
+    Article get(int id);
 
     List<Article> getAll(int userId);
 

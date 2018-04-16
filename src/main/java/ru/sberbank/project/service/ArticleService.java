@@ -11,7 +11,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 public interface ArticleService {
-    Article get(int id, int userId) throws NotFoundException;
+    Article get(int id) throws NotFoundException;
 
     void delete(int id, int userId) throws NotFoundException;
 

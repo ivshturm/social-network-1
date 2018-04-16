@@ -18,7 +18,7 @@ public class RemoteServiceArticleRepository implements ArticleRepository {
 
     @Override
     public Article save(Article article, int userId) {
-        if (!article.isNew() && get(article.getId(), userId) == null) {
+        if (!article.isNew() && get(article.getId()) == null) {
             return null;
         }
         article.setUserId(userId);
@@ -31,8 +31,8 @@ public class RemoteServiceArticleRepository implements ArticleRepository {
     }
 
     @Override
-    public Article get(int id, int userId) {
-        return articleFeignClient.get(id, userId);
+    public Article get(int id) {
+        return articleFeignClient.get(id);
     }
 
     @Override

@@ -6,24 +6,25 @@ import ru.sberbank.project.model.Comment;
 
 import java.util.List;
 
-@Repository("localCommentRepo")
-public class LocalCommentRepository implements CommentRepository {
+@Repository("remoteCommentRepo")
+public class RemoteServiceCommentRepository implements CommentRepository {
 
     @Autowired
-    private CrudCommentRepository crudCommentRepository;
+    private CommentFeignClient commentFeignClient;
+
 
     @Override
     public Comment save(Comment comment) {
-        return crudCommentRepository.save(comment);
+        return commentFeignClient.save(comment);
     }
 
     @Override
     public boolean delete(int id, int userId) {
-        return crudCommentRepository.delete(id, userId) != 0;
+        return commentFeignClient.delete(id, userId) != null;
     }
 
     @Override
     public List<Comment> getAll(int userId) {
-        return crudCommentRepository.getAllByArticleId(userId);
+        return commentFeignClient.getAll(userId);
     }
 }

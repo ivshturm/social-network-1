@@ -24,16 +24,18 @@ import static ru.sberbank.project.util.ValidationUtil.checkNotFoundWithId;
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
-    private static final String REMOTE_SERVICE = "remote";
-    private static final String LOCAL_REPOSITORY = "local";
+    private static final String REMOTE_ARTICLE_SERVICE = "remoteArticleRepo";
+    private static final String LOCAL_ARTICLE_REPOSITORY = "localArticleRepo";
+    private static final String REMOTE_COMMENT_SERVICE = "remoteCommentRepo";
+    private static final String LOCAL_COMMENT_REPOSITORY = "localCommentRepo";
 
     private final ArticleRepository articleRepository;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
 
     @Autowired
-    public ArticleServiceImpl(@Qualifier(LOCAL_REPOSITORY) ArticleRepository articleRepository,
-                              CommentRepository commentRepository,
+    public ArticleServiceImpl(@Qualifier(LOCAL_ARTICLE_REPOSITORY) ArticleRepository articleRepository,
+                              @Qualifier(LOCAL_COMMENT_REPOSITORY) CommentRepository commentRepository,
                               UserRepository userRepository) {
         this.articleRepository = articleRepository;
         this.commentRepository = commentRepository;

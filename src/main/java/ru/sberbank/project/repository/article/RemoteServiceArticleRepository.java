@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Repository("remote")
+@Repository("remoteArticleRepo")
 public class RemoteServiceArticleRepository implements ArticleRepository {
 
     @Autowired

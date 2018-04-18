@@ -9,7 +9,7 @@ import ru.sberbank.project.repository.article.CrudArticleRepository;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Repository("local")
+@Repository("localArticleRepo")
 public class LocalArticleRepository implements ArticleRepository {
 
     @Autowired

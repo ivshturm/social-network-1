@@ -38,9 +38,4 @@ public class LocalArticleRepository implements ArticleRepository {
     public List<Article> getAll(int userId) {
         return crudArticleRepository.getAll(userId);
     }
-
-    @Override
-    public List<Article> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
-        return crudArticleRepository.getBetween(startDate, endDate, userId);
-    }
 }

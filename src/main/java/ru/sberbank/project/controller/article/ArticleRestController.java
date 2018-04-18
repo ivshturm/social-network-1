@@ -54,12 +54,4 @@ public class ArticleRestController extends AbstractArticleController {
 
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
-
-    @Override
-    @GetMapping(value = "/filter")
-    public List<Article> getBetween(
-            @RequestParam(value = "startDate", required = false) LocalDate startDate, @RequestParam(value = "startTime", required = false) LocalTime startTime,
-            @RequestParam(value = "endDate", required = false) LocalDate endDate, @RequestParam(value = "endTime", required = false) LocalTime endTime) {
-        return super.getBetween(startDate, startTime, endDate, endTime);
-    }
 }

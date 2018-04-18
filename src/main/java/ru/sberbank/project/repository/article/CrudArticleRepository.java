@@ -21,9 +21,4 @@ public interface CrudArticleRepository extends JpaRepository<Article, Integer> {
 
     @Query("SELECT a FROM Article a WHERE a.userId=:userId ORDER BY a.dateTime DESC")
     List<Article> getAll(@Param("userId") int userId);
-
-    @SuppressWarnings("JpaQlInspection")
-    @Query("SELECT a from Article a WHERE a.userId=:userId AND a.dateTime BETWEEN :startDate AND :endDate ORDER BY a.dateTime DESC")
-    List<Article> getBetween(
-            @Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate, @Param("userId") int userId);
 }

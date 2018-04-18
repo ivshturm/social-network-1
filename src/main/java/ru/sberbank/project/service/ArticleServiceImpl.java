@@ -51,13 +51,6 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> getBetweenDateTimes(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
-        Assert.notNull(startDateTime, "startDateTime must not be null");
-        Assert.notNull(endDateTime, "endDateTime  must not be null");
-        return articleRepository.getBetween(startDateTime, endDateTime, userId);
-    }
-
-    @Override
     public List<Article> getAll(int userId) {
         return articleRepository.getAll(userId);
     }

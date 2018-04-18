@@ -59,18 +59,6 @@ public abstract class AbstractArticleController {
         service.update(article, userId);
     }
 
-    /**
-     * <li>by date</li>
-     * <li>by time for every date</li>
-     */
-    public List<Article> getBetween(LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime) {
-        int userId = AuthorizedUser.id();
-        log.info("getBetween dates({} - {}) time({} - {}) for user {}", startDate, endDate, startTime, endTime, userId);
-
-        return service.getBetweenDates(
-                startDate != null ? startDate : DateTimeUtil.MIN_DATE,
-                endDate != null ? endDate : DateTimeUtil.MAX_DATE, userId);
-    }
 
     public Comment saveComment(Comment comment) {
         int userId = AuthorizedUser.id();

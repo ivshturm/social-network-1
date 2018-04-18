@@ -15,12 +15,6 @@ public interface ArticleService {
 
     void delete(int id, int userId) throws NotFoundException;
 
-    default List<Article> getBetweenDates(LocalDate startDate, LocalDate endDate, int userId) {
-        return getBetweenDateTimes(LocalDateTime.of(startDate, LocalTime.MIN), LocalDateTime.of(endDate, LocalTime.MAX), userId);
-    }
-
-    List<Article> getBetweenDateTimes(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId);
-
     List<Article> getAll(int userId);
 
     Article update(Article meal, int userId) throws NotFoundException;

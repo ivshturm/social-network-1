@@ -14,6 +14,4 @@ public interface ArticleRepository {
     Article get(int id);
 
     List<Article> getAll(int userId);
-
-    List<Article> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId);
 }

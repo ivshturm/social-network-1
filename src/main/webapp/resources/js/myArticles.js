@@ -3,9 +3,9 @@ var dataTableApi;
 
 function updateTable() {
     $.ajax({
-        type: "POST",
-        url: ajaxUrl + "filter",
-        data: $("#filter").serialize()
+        type: "GET",
+        url: ajaxUrl,
+        data: $().serialize()
     }).done(updateTableByData);
 }
 
@@ -128,12 +128,6 @@ function extendsOpts(opts) {
 
 function add() {
     $("#modalTitle").html("Добавление новой статьи");
-    form.find(":input").val("");
-    $("#editRow").modal();
-}
-
-function addComment() {
-    $("#modalTitle").html("Добавление комментария");
     form.find(":input").val("");
     $("#editRow").modal();
 }

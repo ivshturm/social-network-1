@@ -108,44 +108,8 @@ function extendsOpts(opts) {
     return opts;
 }
 
-function add() {
-    $("#modalTitle").html("Добавление новой статьи");
-    form.find(":input").val("");
-    $("#editRow").modal();
-}
-
-function addComment() {
-    $("#modalTitle").html("Добавление комментария");
-    form.find(":input").val("");
-    $("#editRow").modal();
-}
-
-function updateRow(id) {
-    $("#modalTitle").html("Редактирование вашей статьи");
-    $.get(ajaxUrl + id, function (data) {
-        $.each(data, function (key, value) {
-            form.find("textarea[name='" + key + "']").val(value);
-        });
-        $('#editRow').modal();
-    });
-}
-
-function deleteRow(id) {
-    $.ajax({
-        url: ajaxUrl + id,
-        type: "DELETE"
-    })
-        .done(function () {
-            updateTable();
-        });
-}
-
 function selectRow(id) {
     document.location.href = "article/"+id;
-}
-
-function updateTableByData(data) {
-    dataTableApi.clear().rows.add(data).draw();
 }
 
 function save() {
@@ -157,20 +121,6 @@ function save() {
         $("#editRow").modal("hide");
         updateTable();
     });
-}
-
-function renderEditBtn(data, type, row) {
-    if (type === "display") {
-        return "<a onclick='updateRow(" + row.id + ");'>" +
-            "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a>";
-    }
-}
-
-function renderDeleteBtn(data, type, row) {
-    if (type === "display") {
-        return "<a onclick='deleteRow(" + row.id + ");'>" +
-            "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a>";
-    }
 }
 
 function selectArticle(data, type, row) {

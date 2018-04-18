@@ -39,11 +39,4 @@ public class RemoteServiceArticleRepository implements ArticleRepository {
     public List<Article> getAll(int userId) {
         return articleFeignClient.getAll(userId);
     }
-
-    @Override
-    public List<Article> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
-        return getAll(userId).stream()
-                .filter(article -> DateTimeUtil.isBetween(article.getDateTime(), startDate, endDate))
-                .collect(Collectors.toList());
-    }
 }

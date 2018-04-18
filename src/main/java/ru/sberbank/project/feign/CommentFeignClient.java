@@ -1,4 +1,4 @@
-package ru.sberbank.project.repository.comment;
+package ru.sberbank.project.feign;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;

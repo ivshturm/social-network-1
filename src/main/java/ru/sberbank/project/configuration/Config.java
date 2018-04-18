@@ -7,8 +7,8 @@ import feign.jackson.JacksonEncoder;
 import org.springframework.cloud.netflix.feign.support.SpringMvcContract;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.sberbank.project.repository.article.ArticleFeignClient;
-import ru.sberbank.project.repository.comment.CommentFeignClient;
+import ru.sberbank.project.feign.ArticleFeignClient;
+import ru.sberbank.project.feign.CommentFeignClient;
 
 import static ru.sberbank.project.util.UrlUtil.ARTICLE_SERVICE_URL;
 

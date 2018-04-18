@@ -2,6 +2,7 @@ package ru.sberbank.project.repository.comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.sberbank.project.feign.CommentFeignClient;
 import ru.sberbank.project.model.Comment;
 
 import java.util.List;

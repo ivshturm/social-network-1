@@ -2,13 +2,11 @@ package ru.sberbank.project.repository.article;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.sberbank.project.feign.ArticleFeignClient;
 import ru.sberbank.project.model.Article;
-import ru.sberbank.project.util.DateTimeUtil;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Repository("remoteArticleRepo")
 public class RemoteServiceArticleRepository implements ArticleRepository {

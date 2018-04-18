@@ -10,5 +10,5 @@ public interface CommentRepository {
 
     boolean delete(int id, int userId);
 
-    List<Comment> getAll(int userId);
+    List<Comment> getAll(int articleId);
 }

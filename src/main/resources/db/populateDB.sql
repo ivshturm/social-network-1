@@ -1,4 +1,5 @@
 DELETE FROM user_roles;
+DELETE FROM comments;
 DELETE FROM articles;
 DELETE FROM relations;
 DELETE FROM users;

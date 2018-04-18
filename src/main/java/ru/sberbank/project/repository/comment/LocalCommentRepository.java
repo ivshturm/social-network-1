@@ -23,7 +23,7 @@ public class LocalCommentRepository implements CommentRepository {
     }
 
     @Override
-    public List<Comment> getAll(int userId) {
-        return crudCommentRepository.getAllByArticleId(userId);
+    public List<Comment> getAll(int articleId) {
+        return crudCommentRepository.getAllByArticleId(articleId);
     }
 }

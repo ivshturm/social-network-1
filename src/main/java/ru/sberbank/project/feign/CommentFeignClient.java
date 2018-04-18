@@ -16,11 +16,11 @@ public interface CommentFeignClient {
     Comment save(Comment comment);
 
     @RequestMapping(value = "/comment/deleted/{id}/{userId}", method = RequestMethod.DELETE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+            produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     Comment delete(@PathVariable(value = "id") int id,
                    @PathVariable(value = "userId") int userId);
 
     @RequestMapping(value = "/comments/user/{userId}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    List<Comment> getAll(@PathVariable(value = "userId") int userId);
+    List<Comment> getAll(@PathVariable(value = "userId") int articleId);
 }

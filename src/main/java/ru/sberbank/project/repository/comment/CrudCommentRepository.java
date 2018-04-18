@@ -15,7 +15,7 @@ public interface CrudCommentRepository extends CrudRepository<Comment, Integer> 
     @Override
     Comment save(Comment comment);
 
-    List<Comment> getAllByArticleId(Integer userId);
+    List<Comment> getAllByArticleId(Integer articleId);
 
     @Modifying
     @Query("DELETE FROM Comment c WHERE c.id=:id AND c.userId=:userId")

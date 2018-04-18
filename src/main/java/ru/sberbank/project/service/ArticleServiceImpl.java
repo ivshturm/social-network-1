@@ -7,7 +7,6 @@ import org.springframework.util.Assert;
 import ru.sberbank.project.model.Article;
 import ru.sberbank.project.model.Comment;
 import ru.sberbank.project.model.CommentTo;
-import ru.sberbank.project.model.User;
 import ru.sberbank.project.repository.article.ArticleRepository;
 import ru.sberbank.project.repository.comment.CommentRepository;
 import ru.sberbank.project.repository.user.UserRepository;
@@ -34,7 +33,10 @@ public class ArticleServiceImpl implements ArticleService {
     private final UserRepository userRepository;
 
     @Autowired
-    public ArticleServiceImpl(@Qualifier(LOCAL_ARTICLE_REPOSITORY) ArticleRepository articleRepository,
+    public ArticleServiceImpl(
+//                              @Qualifier(REMOTE_ARTICLE_SERVICE) ArticleRepository articleRepository,
+//                              @Qualifier(REMOTE_COMMENT_SERVICE) CommentRepository commentRepository,
+                              @Qualifier(LOCAL_ARTICLE_REPOSITORY) ArticleRepository articleRepository,
                               @Qualifier(LOCAL_COMMENT_REPOSITORY) CommentRepository commentRepository,
                               UserRepository userRepository) {
         this.articleRepository = articleRepository;

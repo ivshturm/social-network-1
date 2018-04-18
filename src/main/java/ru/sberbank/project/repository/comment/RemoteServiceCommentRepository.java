@@ -25,7 +25,7 @@ public class RemoteServiceCommentRepository implements CommentRepository {
     }
 
     @Override
-    public List<Comment> getAll(int userId) {
-        return commentFeignClient.getAll(userId);
+    public List<Comment> getAll(int articleId) {
+        return commentFeignClient.getAll(articleId);
     }
 }

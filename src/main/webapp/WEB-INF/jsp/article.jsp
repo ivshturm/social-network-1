@@ -60,7 +60,12 @@
                                 <div class="col-sm-6">
                                     <div class="panel panel-default">
                                         <div class="panel-heading">
-                                            <strong>${comment.userTo.fullName}</strong> <span class="text-muted">Прокоментировал(а) ${comment.dateTime}</span>
+                                            <strong>
+                                                <a class="btn btn-outline-primary" href="/user/${comment.userId}" methods="get">
+                                                        ${comment.userTo.fullName}
+                                                </a>
+                                            </strong>
+                                            <span class="text-muted">Прокоментировал(а) ${comment.dateTime}</span>
                                         </div>
                                         <div class="panel-body">
                                             ${comment.text}

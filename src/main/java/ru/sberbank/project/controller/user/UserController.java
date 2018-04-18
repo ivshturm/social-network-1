@@ -78,4 +78,9 @@ public class UserController extends AbstractUserController {
         model.addAttribute("authUserId", authorizedUser.getId());
         return "redirect:/user/{userIdPage}";
     }
+
+    @GetMapping("/news")
+    public String getNews() {
+        return "news";
+    }
 }

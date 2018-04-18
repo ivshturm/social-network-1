@@ -15,6 +15,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-4">
+                    <a class="btn btn-outline-primary" href="/news" methods="get">
+                        <button class="btn btn-primary" type="button" class="btn btn-outline-primary">Мои новости</button>
+                    </a>
                     <h2 >${userTo.name}  ${userTo.lastName}</h2>
                     <h5 >Возраст: ${userTo.currentYear - userTo.birthdayYear}</h5>
                 </div>
@@ -29,12 +32,10 @@
                 </div>
                 <div class="col-xs-3" align="right">
                     <p>Найти пользователей</p>
-                    <p>
                     <form class="form-inline my-2 my-lg-0" action="/search" method="GET">
                         <input class="form-control mr-sm-2" type="text" name="name" placeholder="Введите имя или фамилию">
                         <input class="form-control mr-sm-2" type ="submit" value="Найти">
                     </form>
-                    </p>
                     <p></p>
                     <p>
                         <a href="/chat?id=${userTo.id}" onclick="javascript:event.target.port=8090" target="_blank">Чат</a>

@@ -8,7 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ru.sberbank.project.data.ArticleTestData;
 import ru.sberbank.project.data.CommentTestData;
 import ru.sberbank.project.data.UserTestData;
 import ru.sberbank.project.model.Article;
@@ -17,6 +16,11 @@ import ru.sberbank.project.util.exception.NotFoundException;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static ru.sberbank.project.data.ArticleTestData.*;
+import static ru.sberbank.project.data.CommentTestData.COMMENT_1;
+import static ru.sberbank.project.data.CommentTestData.COMMENT_2;
+import static ru.sberbank.project.data.UserTestData.USER_1_ID;
 
 
 @ContextConfiguration({
@@ -32,8 +36,8 @@ public class ArticleServiceImplTest {
 
     @Test
     public void get() {
-        Article article = service.get(ArticleTestData.ARTICLE_1_ID);
-        ArticleTestData.assertMatch(article, ArticleTestData.ARTICLE_1);
+        Article article = service.get(ARTICLE_1_ID);
+        assertMatch(article, ARTICLE_1);
     }
 
     @Test(expected = NotFoundException.class)
@@ -43,82 +47,81 @@ public class ArticleServiceImplTest {
 
     @Test
     public void delete() {
-        service.delete(ArticleTestData.ARTICLE_1_ID, UserTestData.USER_1_ID);
-        ArticleTestData.assertMatch(service.getAll(UserTestData.USER_1_ID), ArticleTestData.ARTICLE_2);
+        service.delete(ARTICLE_1_ID, USER_1_ID);
+        assertMatch(service.getAll(USER_1_ID), ARTICLE_2);
     }
 
     @Test(expected = NotFoundException.class)
     public void notFoundArticleDelete() throws Exception {
-        service.delete(1, UserTestData.USER_1_ID);
+        service.delete(1, USER_1_ID);
     }
 
     @Test(expected = NotFoundException.class)
     public void notFoundUserDelete() throws Exception {
-        service.delete(ArticleTestData.ARTICLE_1_ID, 1);
+        service.delete(ARTICLE_1_ID, 1);
     }
 
     @Test
     public void getAll() {
-        List<Article> articles = service.getAll(UserTestData.USER_1_ID);
-        ArticleTestData.assertMatch(articles, ArticleTestData.ARTICLE_1, ArticleTestData.ARTICLE_2);
+        List<Article> articles = service.getAll(USER_1_ID);
+        assertMatch(articles, ARTICLE_1, ARTICLE_2);
     }
 
     @Test
     public void getAllEmpty() {
         List<Article> articles = service.getAll(1);
-        ArticleTestData.assertMatch(articles);
+        assertMatch(articles);
     }
 
     @Test
     public void update() {
-        Article updated = new Article(ArticleTestData.ARTICLE_1);
+        Article updated = new Article(ARTICLE_1);
         updated.setName("UpdatedName");
         updated.setText("UpdatedText");
-        service.update(updated, UserTestData.USER_1_ID);
-        ArticleTestData.assertMatch(service.get(ArticleTestData.ARTICLE_1_ID), updated);
+        service.update(updated, USER_1_ID);
+        assertMatch(service.get(ARTICLE_1_ID), updated);
     }
 
     @Test
     public void create() {
-        Article newArticle = new Article(null, "new article", "something is written", UserTestData.USER_1_ID);
-        Article created = service.create(newArticle, UserTestData.USER_1_ID);
+        Article newArticle = new Article(null, "new article", "something is written", USER_1_ID);
+        Article created = service.create(newArticle, USER_1_ID);
         newArticle.setId(created.getId());
-        ArticleTestData.assertMatch(service.getAll(UserTestData.USER_1_ID),
-                newArticle, ArticleTestData.ARTICLE_1, ArticleTestData.ARTICLE_2);
+        assertMatch(service.getAll(USER_1_ID), newArticle, ARTICLE_1, ARTICLE_2);
     }
 
     @Test(expected = DataIntegrityViolationException.class)
     public void createNotFoundUser() {
-        Article newArticle = new Article(null, "new article", "something is written", UserTestData.USER_1_ID);
+        Article newArticle = new Article(null, "new article", "something is written", USER_1_ID);
         service.create(newArticle, 1);
     }
 
     @Test
     public void saveComment() {
-        Comment newComment = new Comment(UserTestData.USER_1_ID, ArticleTestData.ARTICLE_1_ID, "something is written");
-        Comment created = service.saveComment(newComment, UserTestData.USER_1_ID);
+        Comment newComment = new Comment(USER_1_ID, ARTICLE_1_ID, "something is written");
+        Comment created = service.saveComment(newComment, USER_1_ID);
         newComment.setId(created.getId());
-        CommentTestData.assertMatch(service.getAllCommentsForArticleById(ArticleTestData.ARTICLE_1_ID),
-                        CommentTestData.COMMENT_2, CommentTestData.COMMENT_1, newComment);
+        CommentTestData.assertMatch(service.getAllCommentsForArticleById(ARTICLE_1_ID),
+                        COMMENT_2, COMMENT_1, newComment);
     }
 
     @Test
     public void deleteComment() {
         service.deleteComment(CommentTestData.COMMENT_1_ID, UserTestData.USER_2_ID);
-        CommentTestData.assertMatch(service.getAllCommentsForArticleById(ArticleTestData.ARTICLE_1_ID), CommentTestData.COMMENT_2);
+        CommentTestData.assertMatch(service.getAllCommentsForArticleById(ARTICLE_1_ID), COMMENT_2);
 
     }
 
     @Test
     public void getAllCommentsForArticleByIdSuccess() {
-        List<Comment> comments = service.getAllCommentsForArticleById(ArticleTestData.ARTICLE_1_ID)
+        List<Comment> comments = service.getAllCommentsForArticleById(ARTICLE_1_ID)
                 .stream().map(Comment::new).collect(Collectors.toList());
-        CommentTestData.assertMatch(comments, CommentTestData.COMMENT_2, CommentTestData.COMMENT_1);
+        CommentTestData.assertMatch(comments, COMMENT_2, COMMENT_1);
     }
 
     @Test
     public void getAllCommentsForArticleByIdEmpty() {
-        List<Comment> comments = service.getAllCommentsForArticleById(ArticleTestData.ARTICLE_2_ID)
+        List<Comment> comments = service.getAllCommentsForArticleById(ARTICLE_2_ID)
                 .stream().map(Comment::new).collect(Collectors.toList());
         CommentTestData.assertMatch(comments);
     }

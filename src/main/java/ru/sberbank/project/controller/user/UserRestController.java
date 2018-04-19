@@ -10,13 +10,12 @@ import ru.sberbank.project.model.User;
 import ru.sberbank.project.model.UserTo;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(ProfileRestController.REST_URL)
-public class ProfileRestController extends AbstractUserController {
+@RequestMapping(UserRestController.REST_URL)
+public class UserRestController extends AbstractUserController {
     static final String REST_URL = "/rest/profile";
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)

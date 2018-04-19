@@ -17,6 +17,8 @@ import ru.sberbank.project.util.exception.NotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 
+import static ru.sberbank.project.data.UserTestData.*;
+
 
 @ContextConfiguration({
         "classpath:spring/spring-app.xml",
@@ -35,7 +37,7 @@ public class UserServiceImplTest {
                 LocalDate.of(2001, 1, 1).atStartOfDay(), Role.ROLE_USER);
         User created = service.create(newUser);
         newUser.setId(created.getId());
-        UserTestData.assertMatch(service.getAll(), UserTestData.USER_2, newUser, UserTestData.USER_1);
+        assertMatch(service.getAll(), USER_2, newUser, USER_1);
     }
 
     @Test(expected = DataAccessException.class)
@@ -46,8 +48,8 @@ public class UserServiceImplTest {
 
     @Test
     public void delete() {
-        service.delete(UserTestData.USER_1_ID);
-        UserTestData.assertMatch(service.getAll(), UserTestData.USER_2);
+        service.delete(USER_1_ID);
+        assertMatch(service.getAll(), USER_2);
     }
 
     @Test(expected = NotFoundException.class)
@@ -57,8 +59,8 @@ public class UserServiceImplTest {
 
     @Test
     public void get() throws Exception {
-        User user = service.get(UserTestData.USER_1_ID);
-        UserTestData.assertMatch(user, UserTestData.USER_1);
+        User user = service.get(USER_1_ID);
+        assertMatch(user, USER_1);
     }
 
     @Test(expected = NotFoundException.class)
@@ -68,47 +70,47 @@ public class UserServiceImplTest {
 
     @Test
     public void update() throws Exception {
-        User updated = new User(UserTestData.USER_1);
+        User updated = new User(USER_1);
         updated.setName("UpdatedName");
         updated.setLastName("UpdatedLastName");
         service.update(updated);
-        UserTestData.assertMatch(service.get(UserTestData.USER_1_ID), updated);
+        assertMatch(service.get(USER_1_ID), updated);
     }
 
     @Test
     public void getAll() throws Exception {
         List<User> all = service.getAll();
-        UserTestData.assertMatch(all, UserTestData.USER_2, UserTestData.USER_1);
+        assertMatch(all, USER_2, USER_1);
     }
 
     @Test
     public void findAllByNameOrLastNameTwoUsers() {
         List<User> all = service.findAllByNameOrLastName("test");
-        UserTestData.assertMatch(all, UserTestData.USER_1, UserTestData.USER_2);
+        assertMatch(all, USER_1, USER_2);
     }
 
     @Test
     public void findAllByNameOrLastNameOneUser() {
         List<User> all = service.findAllByNameOrLastName("user");
-        UserTestData.assertMatch(all, UserTestData.USER_1);
+        assertMatch(all, USER_1);
     }
 
     @Test
     public void findAllByNameOrLastNameNull() {
         List<User> all = service.findAllByNameOrLastName("parameter");
-        UserTestData.assertMatch(all);
+        assertMatch(all);
     }
 
     @Test
     public void getAllFollowersByUserId() {
-        List<User> all = service.getAllFollowersByUserId(UserTestData.USER_1_ID);
-        UserTestData.assertMatch(all, UserTestData.USER_2);
+        List<User> all = service.getAllFollowersByUserId(USER_1_ID);
+        assertMatch(all, USER_2);
     }
 
     @Test
     public void getAllFollowingByUserId() {
-        List<User> all = service.getAllFollowersByUserId(UserTestData.USER_1_ID);
-        UserTestData.assertMatch(all, UserTestData.USER_2);
+        List<User> all = service.getAllFollowersByUserId(USER_1_ID);
+        assertMatch(all, USER_2);
     }
 
     @Test
@@ -118,25 +120,25 @@ public class UserServiceImplTest {
         User created = service.create(newUser);
         int createdId = created.getId();
         newUser.setId(createdId);
-        service.subscribeToUser(createdId, UserTestData.USER_1_ID);
-        UserTestData.assertMatch(service.getAllFollowersByUserId(UserTestData.USER_1_ID), UserTestData.USER_2, newUser);
+        service.subscribeToUser(createdId, USER_1_ID);
+        assertMatch(service.getAllFollowersByUserId(USER_1_ID), USER_2, newUser);
     }
 
     @Test
     public void unsubscribeToUser() {
-        service.unsubscribeToUser(UserTestData.USER_1_ID, UserTestData.USER_2_ID);
-        List<User> followers = service.getAllFollowersByUserId(UserTestData.USER_2_ID);
-        UserTestData.assertMatch(followers);
+        service.unsubscribeToUser(USER_1_ID, UserTestData.USER_2_ID);
+        List<User> followers = service.getAllFollowersByUserId(USER_2_ID);
+        assertMatch(followers);
     }
 
     @Test
     public void checkSubscribeTrue() {
-        Assert.assertNotNull(service.checkSubscribe(UserTestData.USER_1_ID, UserTestData.USER_2_ID));
+        Assert.assertNotNull(service.checkSubscribe(USER_1_ID, USER_2_ID));
     }
 
     @Test
     public void checkSubscribeFalse() {
-        service.unsubscribeToUser(UserTestData.USER_1_ID, UserTestData.USER_2_ID);
-        Assert.assertNull(service.checkSubscribe(UserTestData.USER_1_ID, UserTestData.USER_2_ID));
+        service.unsubscribeToUser(USER_1_ID, USER_2_ID);
+        Assert.assertNull(service.checkSubscribe(USER_1_ID, USER_2_ID));
     }
 }

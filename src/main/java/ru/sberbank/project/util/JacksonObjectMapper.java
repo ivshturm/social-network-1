@@ -3,6 +3,7 @@ package ru.sberbank.project.util;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
@@ -33,5 +34,13 @@ public class JacksonObjectMapper extends ObjectMapper {
 
     public static ObjectMapper getMapper() {
         return MAPPER;
+    }
+
+    public static <T> String writeValue(T obj) {
+        try {
+            return getMapper().writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            throw new IllegalStateException("Invalid write to JSON:\n'" + obj + "'", e);
+        }
     }
 }

@@ -67,7 +67,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         checkNotFoundWithId(repository.save(prepareToSave(user, passwordEncoder)), user.getId());
     }
 
-    @CacheEvict(value = "users", allEntries = true)
     @Transactional
     @Override
     public void update(UserTo userTo) {

@@ -36,14 +36,23 @@ public class Article extends AbstractBaseEntity {
     public Article(String name, String text) {
         this.name = name;
         this.text = text;
-        this.userId = userId;
     }
 
     public Article(Integer id, String name, String text) {
         super(id);
         this.name = name;
         this.text = text;
+    }
+
+    public Article(Integer id, String name, String text, int userId) {
+        super(id);
+        this.name = name;
+        this.text = text;
         this.userId = userId;
+    }
+
+    public Article(Article a) {
+        this(a.id, a.name, a.text, a.userId);
     }
 
     public String getName() {

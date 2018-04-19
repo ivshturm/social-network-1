@@ -199,7 +199,7 @@
             <version>1.2</version>
         </dependency>
 
-        <!-- Webjars (static dependencies distributed as JAR files) -->
+        <!-- Webjars  -->
         <dependency>
             <groupId>org.webjars.bower</groupId>
             <artifactId>jquery</artifactId>
@@ -287,6 +287,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-test-autoconfigure</artifactId>
             <version>2.0.0.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.8.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

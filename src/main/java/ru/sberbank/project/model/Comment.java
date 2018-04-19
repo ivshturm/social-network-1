@@ -31,6 +31,19 @@ public class Comment extends AbstractBaseEntity {
     public Comment() {
     }
 
+    public Comment(int userId, int articleId, String text) {
+        this.userId = userId;
+        this.articleId = articleId;
+        this.text = text;
+    }
+
+    public Comment(int id, int userId, int articleId, String text) {
+        super(id);
+        this.userId = userId;
+        this.articleId = articleId;
+        this.text = text;
+    }
+
     public Comment(int userId, int articleId, String text, LocalDateTime dateTime) {
         this.userId = userId;
         this.articleId = articleId;
@@ -39,6 +52,7 @@ public class Comment extends AbstractBaseEntity {
     }
 
     public Comment(CommentTo commentTo) {
+        super(commentTo.getId());
         this.userId = commentTo.getUserId();
         this.articleId = commentTo.getArticleId();
         this.text = commentTo.getText();
@@ -83,6 +97,7 @@ public class Comment extends AbstractBaseEntity {
                 ", articleId=" + articleId +
                 ", text='" + text + '\'' +
                 ", dateTime=" + dateTime +
+                ", id=" + id +
                 '}';
     }
 }

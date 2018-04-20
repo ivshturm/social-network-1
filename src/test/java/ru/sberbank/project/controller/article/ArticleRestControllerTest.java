@@ -24,9 +24,9 @@ import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static ru.sberbank.project.data.ArticleTestData.*;
-import static ru.sberbank.project.data.ArticleTestData.assertMatch;
-import static ru.sberbank.project.data.UserTestData.*;
+import static ru.sberbank.project.ArticleTestData.*;
+import static ru.sberbank.project.ArticleTestData.assertMatch;
+import static ru.sberbank.project.UserTestData.*;
 
 @ContextConfiguration({
         "classpath:spring/spring-app.xml",

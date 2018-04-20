@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static ru.sberbank.project.controller.user.UserRestController.REST_URL;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static ru.sberbank.project.data.UserTestData.*;
+import static ru.sberbank.project.UserTestData.*;
 
 @ContextConfiguration({
         "classpath:spring/spring-app.xml",

@@ -8,8 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ru.sberbank.project.data.CommentTestData;
-import ru.sberbank.project.data.UserTestData;
+import ru.sberbank.project.CommentTestData;
+import ru.sberbank.project.UserTestData;
 import ru.sberbank.project.model.Article;
 import ru.sberbank.project.model.Comment;
 import ru.sberbank.project.util.exception.NotFoundException;
@@ -17,10 +17,10 @@ import ru.sberbank.project.util.exception.NotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.sberbank.project.data.ArticleTestData.*;
-import static ru.sberbank.project.data.CommentTestData.COMMENT_1;
-import static ru.sberbank.project.data.CommentTestData.COMMENT_2;
-import static ru.sberbank.project.data.UserTestData.USER_1_ID;
+import static ru.sberbank.project.ArticleTestData.*;
+import static ru.sberbank.project.CommentTestData.COMMENT_1;
+import static ru.sberbank.project.CommentTestData.COMMENT_2;
+import static ru.sberbank.project.UserTestData.USER_1_ID;
 
 
 @ContextConfiguration({

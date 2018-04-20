@@ -1,4 +1,4 @@
-package ru.sberbank.project.data;
+package ru.sberbank.project;
 
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.web.servlet.request.RequestPostProcessor;

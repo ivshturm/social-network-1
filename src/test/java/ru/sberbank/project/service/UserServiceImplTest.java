@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import ru.sberbank.project.data.UserTestData;
+import ru.sberbank.project.UserTestData;
 import ru.sberbank.project.model.Role;
 import ru.sberbank.project.model.User;
 import ru.sberbank.project.util.exception.NotFoundException;
@@ -17,7 +17,7 @@ import ru.sberbank.project.util.exception.NotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 
-import static ru.sberbank.project.data.UserTestData.*;
+import static ru.sberbank.project.UserTestData.*;
 
 
 @ContextConfiguration({

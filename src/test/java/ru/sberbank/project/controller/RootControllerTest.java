@@ -22,7 +22,7 @@ import javax.annotation.PostConstruct;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static ru.sberbank.project.data.UserTestData.USER_1;
+import static ru.sberbank.project.UserTestData.USER_1;
 
 
 @ContextConfiguration({

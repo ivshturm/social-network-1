@@ -1,4 +1,4 @@
-package ru.sberbank.project.data;
+package ru.sberbank.project;
 
 import ru.sberbank.project.model.Comment;
 import ru.sberbank.project.model.CommentTo;

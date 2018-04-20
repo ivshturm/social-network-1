@@ -1,4 +1,4 @@
-package ru.sberbank.project.data;
+package ru.sberbank.project;
 
 public class TestData {
 

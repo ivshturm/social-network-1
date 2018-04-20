@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import ru.sberbank.project.feign.NewsFeignClient;
 import ru.sberbank.project.model.Article;
 import ru.sberbank.project.model.Comment;
 import ru.sberbank.project.model.CommentTo;
@@ -31,6 +32,7 @@ public class ArticleServiceImpl implements ArticleService {
     private final ArticleRepository articleRepository;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
+    private final NewsFeignClient newsFeignClient;
 
     @Autowired
     public ArticleServiceImpl(
@@ -38,10 +40,12 @@ public class ArticleServiceImpl implements ArticleService {
 //                              @Qualifier(REMOTE_COMMENT_SERVICE) CommentRepository commentRepository,
                               @Qualifier(LOCAL_ARTICLE_REPOSITORY) ArticleRepository articleRepository,
                               @Qualifier(LOCAL_COMMENT_REPOSITORY) CommentRepository commentRepository,
-                              UserRepository userRepository) {
+                              UserRepository userRepository,
+                              NewsFeignClient newsFeignClient) {
         this.articleRepository = articleRepository;
         this.commentRepository = commentRepository;
         this.userRepository = userRepository;
+        this.newsFeignClient = newsFeignClient;
     }
 
     @Override
@@ -90,5 +94,10 @@ public class ArticleServiceImpl implements ArticleService {
                 .sorted(Comparator.comparing(CommentTo::getDateTime))
                 .peek(commentTo -> commentTo.setUserTo(UserUtil.asTo(userRepository.get(commentTo.getUserId()))))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Article> getNews(List<Integer> usersId) {
+        return newsFeignClient.getAll(usersId);
     }
 }

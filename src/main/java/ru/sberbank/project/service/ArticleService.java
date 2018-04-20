@@ -27,5 +27,5 @@ public interface ArticleService {
 
     List<CommentTo> getAllCommentsForArticleById(int id);
 
-
+    List<Article> getNews(List<Integer> usersId);
 }

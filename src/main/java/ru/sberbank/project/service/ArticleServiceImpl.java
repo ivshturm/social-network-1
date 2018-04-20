@@ -34,10 +34,10 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     public ArticleServiceImpl(
-//                              @Qualifier(REMOTE_ARTICLE_SERVICE) ArticleRepository articleRepository,
-//                              @Qualifier(REMOTE_COMMENT_SERVICE) CommentRepository commentRepository,
-                              @Qualifier(LOCAL_ARTICLE_REPOSITORY) ArticleRepository articleRepository,
-                              @Qualifier(LOCAL_COMMENT_REPOSITORY) CommentRepository commentRepository,
+                              @Qualifier(REMOTE_ARTICLE_SERVICE) ArticleRepository articleRepository,
+                              @Qualifier(REMOTE_COMMENT_SERVICE) CommentRepository commentRepository,
+//                              @Qualifier(LOCAL_ARTICLE_REPOSITORY) ArticleRepository articleRepository,
+//                              @Qualifier(LOCAL_COMMENT_REPOSITORY) CommentRepository commentRepository,
                               UserRepository userRepository,
                               NewsFeignClient newsFeignClient) {
         this.articleRepository = articleRepository;

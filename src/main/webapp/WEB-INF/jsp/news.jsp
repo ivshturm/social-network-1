@@ -28,7 +28,6 @@
         <table class="table table-striped display" id="dataTable">
             <thead>
             <tr>
-                <th width="20%">Кто написал</th>
                 <th width="55%">Название</th>
                 <th>Дата публикации</th>
                 <th>Смотреть</th>

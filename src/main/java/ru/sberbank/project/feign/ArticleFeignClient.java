@@ -1,5 +1,6 @@
 package ru.sberbank.project.feign;
 
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +11,7 @@ import ru.sberbank.project.model.Article;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@FeignClient
 public interface ArticleFeignClient {
 
     @RequestMapping(method = RequestMethod.POST, value = "/article/{userId}",

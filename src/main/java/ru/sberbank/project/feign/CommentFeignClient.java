@@ -1,5 +1,6 @@
 package ru.sberbank.project.feign;
 
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,7 @@ import ru.sberbank.project.model.Comment;
 
 import java.util.List;
 
+@FeignClient
 public interface CommentFeignClient {
 
     @RequestMapping(value = "/comment/add", method = RequestMethod.POST,

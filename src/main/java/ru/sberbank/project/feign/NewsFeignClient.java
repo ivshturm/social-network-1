@@ -1,11 +1,13 @@
 package ru.sberbank.project.feign;
 
+import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.sberbank.project.model.Article;
 
 import java.util.List;
 
+@FeignClient
 public interface NewsFeignClient {
 
     @RequestMapping(method = RequestMethod.GET, value = "/news",

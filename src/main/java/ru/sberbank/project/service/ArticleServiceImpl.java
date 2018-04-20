@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import ru.sberbank.project.feign.NewsFeignClient;
-import ru.sberbank.project.model.Article;
-import ru.sberbank.project.model.Comment;
-import ru.sberbank.project.model.CommentTo;
+import ru.sberbank.project.model.*;
 import ru.sberbank.project.repository.article.ArticleRepository;
 import ru.sberbank.project.repository.comment.CommentRepository;
 import ru.sberbank.project.repository.user.UserRepository;
@@ -97,7 +95,10 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> getNews(List<Integer> usersId) {
-        return newsFeignClient.getAll(usersId);
+    public List<Article> getNews(List<User> users) {
+        return newsFeignClient.getAll(users
+                .stream()
+                .map(AbstractBaseEntity::getId)
+                .collect(Collectors.toList()));
     }
 }

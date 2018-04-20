@@ -82,8 +82,6 @@ public abstract class AbstractArticleController {
 
     public List<Article> getNews() {
         int userId = AuthorizedUser.id();
-        List<Integer> listUsersId = userService.getAllFollowingByUserId(userId)
-                .stream().map(AbstractBaseEntity::getId).collect(Collectors.toList());
-        return articleService.getNews(listUsersId);
+        return articleService.getNews(userService.getAllFollowingByUserId(userId));
     }
 }

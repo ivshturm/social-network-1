@@ -1,9 +1,6 @@
 package ru.sberbank.project.service;
 
-import ru.sberbank.project.model.Article;
-import ru.sberbank.project.model.Comment;
-import ru.sberbank.project.model.CommentTo;
-import ru.sberbank.project.model.User;
+import ru.sberbank.project.model.*;
 import ru.sberbank.project.util.exception.NotFoundException;
 
 import java.time.LocalDate;
@@ -28,5 +25,5 @@ public interface ArticleService {
 
     List<CommentTo> getAllCommentsForArticleById(int id);
 
-    List<Article> getNews(List<User> usersArticle);
+    List<ArticleTo> getNews(List<User> usersArticle);
 }

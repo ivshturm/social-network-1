@@ -3,6 +3,7 @@ package ru.sberbank.project.controller.article;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.sberbank.project.model.ArticleTo;
 import ru.sberbank.project.util.View;
 import ru.sberbank.project.model.Article;
 
@@ -27,7 +28,7 @@ public class ArticleAjaxController extends AbstractArticleController {
     }
 
     @GetMapping(value = "/news", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Article> getNews() {
+    public List<ArticleTo> getNews() {
         return super.getNews();
     }
 

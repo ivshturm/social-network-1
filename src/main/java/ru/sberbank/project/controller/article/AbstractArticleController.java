@@ -3,11 +3,8 @@ package ru.sberbank.project.controller.article;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.sberbank.project.model.AbstractBaseEntity;
-import ru.sberbank.project.model.Comment;
-import ru.sberbank.project.model.CommentTo;
+import ru.sberbank.project.model.*;
 import ru.sberbank.project.security.AuthorizedUser;
-import ru.sberbank.project.model.Article;
 import ru.sberbank.project.service.ArticleService;
 import ru.sberbank.project.service.UserService;
 
@@ -80,7 +77,7 @@ public abstract class AbstractArticleController {
         return articleService.getAllCommentsForArticleById(articleId);
     }
 
-    public List<Article> getNews() {
+    public List<ArticleTo> getNews() {
         int userId = AuthorizedUser.id();
         return articleService.getNews(userService.getAllFollowingByUserId(userId));
     }

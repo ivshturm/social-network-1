@@ -95,10 +95,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> getNews(List<User> users) {
+    public List<ArticleTo> getNews(List<User> users) {
         return newsFeignClient.getAll(users
                 .stream()
                 .map(AbstractBaseEntity::getId)
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList()))
+                .stream()
+                .map(ArticleTo::new)
+                .peek(articleTo -> articleTo.setUserFullName(userRepository.get(articleTo.getUserId()).getFullName()))
+                .collect(Collectors.toList());
     }
 }

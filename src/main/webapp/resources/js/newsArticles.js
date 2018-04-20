@@ -18,6 +18,9 @@ $(function () {
     dataTableApi = $('#dataTable').DataTable(extendsOpts({
         "columns": [
             {
+                "data": "userFullName"
+            },
+            {
                 "data": "name"
             },
             {
@@ -31,7 +34,7 @@ $(function () {
         ],
         "order": [
             [
-                1,
+                2,
                 "desc"
             ]
         ],

@@ -6,12 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.sberbank.project.util.View;
 import ru.sberbank.project.model.Article;
 
 import java.net.URI;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -40,12 +37,12 @@ public class ArticleRestController extends AbstractArticleController {
 
     @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@Validated(View.Web.class) @RequestBody Article article, @PathVariable("id") int id) {
+    public void update(@Validated @RequestBody Article article, @PathVariable("id") int id) {
         super.update(article, id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Article> createWithLocation(@Validated(View.Web.class) @RequestBody Article article) {
+    public ResponseEntity<Article> createWithLocation(@Validated @RequestBody Article article) {
         Article created = super.create(article);
 
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()

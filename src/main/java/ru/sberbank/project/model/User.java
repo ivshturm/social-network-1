@@ -7,7 +7,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.util.CollectionUtils;
-import ru.sberbank.project.util.View;
 import ru.sberbank.project.util.DateTimeUtil;
 
 import javax.persistence.*;
@@ -25,20 +24,20 @@ public class User extends AbstractBaseEntity {
     @NotBlank
     @Size(min = 2, max = 100)
     @Column(name = "name", nullable = false)
-    @SafeHtml(groups = {View.Web.class})
+    @SafeHtml
     protected String name;
 
     @NotBlank
     @Size(min = 2, max = 100)
     @Column(name = "last_name", nullable = false)
-    @SafeHtml(groups = {View.Web.class})
+    @SafeHtml
     protected String lastName;
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
     @NotBlank
     @Size(max = 100)
-    @SafeHtml(groups = {View.Web.class})  // https://stackoverflow.com/questions/17480809
+    @SafeHtml
     private String email;
 
     @Column(name = "password", nullable = false)

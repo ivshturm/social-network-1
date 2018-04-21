@@ -4,11 +4,8 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.sberbank.project.model.ArticleTo;
-import ru.sberbank.project.util.View;
 import ru.sberbank.project.model.Article;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 @RestController
@@ -45,7 +42,7 @@ public class ArticleAjaxController extends AbstractArticleController {
     }
 
     @PostMapping
-    public void createOrUpdate(@Validated(View.Web.class) Article article) {
+    public void createOrUpdate(@Validated Article article) {
         if (article.isNew()) {
             super.create(article);
         } else {

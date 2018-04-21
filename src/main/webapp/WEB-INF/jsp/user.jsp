@@ -56,7 +56,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-8" align="left">
-                    <h3>Публикации пользователя</h3>
+                    <h3>Статьи пользователя</h3>
                 </div>
             </div>
         </div>

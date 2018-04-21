@@ -26,17 +26,4 @@ public class ApplicationException extends RuntimeException {
     public ErrorType getType() {
         return type;
     }
-
-    public String getMsgCode() {
-        return msgCode;
-    }
-
-    public HttpStatus getHttpStatus() {
-        return httpStatus;
-    }
-
-    public String[] getArgs() {
-        return args;
-    }
-
 }

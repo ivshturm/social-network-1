@@ -56,7 +56,7 @@
                     </a>
                 </div>
                 <div class="col-xs-8" align="left">
-                    <h3>Мои публикации</h3>
+                    <h3>Мои статьи</h3>
                 </div>
             </div>
         </div>

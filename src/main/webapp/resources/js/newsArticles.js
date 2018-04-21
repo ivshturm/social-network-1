@@ -103,7 +103,7 @@ function extendsOpts(opts) {
             "paging": false,
             "info": true,
             "language": {
-                "search": "Искать по публикациям"
+                "search": "Искать по статьям"
             },
             "initComplete": makeEditable
         }

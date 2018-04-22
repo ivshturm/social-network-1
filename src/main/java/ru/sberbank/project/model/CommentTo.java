@@ -1,11 +1,5 @@
 package ru.sberbank.project.model;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import ru.sberbank.project.util.ParseDeserializer;
-
-import java.time.LocalDateTime;
 
 public class CommentTo {
 

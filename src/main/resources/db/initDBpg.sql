@@ -28,14 +28,14 @@ CREATE TABLE user_roles
   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
-CREATE TABLE articles (
-  id          INTEGER   PRIMARY KEY DEFAULT nextval('global_seq'),
-  user_id     INTEGER   NOT NULL,
-  name        TEXT      NOT NULL,
-  text        TEXT      NOT NULL,
-  date_time   TIMESTAMP DEFAULT now(),
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
-);
+-- CREATE TABLE articles (
+--   id          INTEGER   PRIMARY KEY DEFAULT nextval('global_seq'),
+--   user_id     INTEGER   NOT NULL,
+--   name        TEXT      NOT NULL,
+--   text        TEXT      NOT NULL,
+--   date_time   TIMESTAMP DEFAULT now(),
+--   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+-- );
 
 CREATE TABLE relations
 (
@@ -45,12 +45,12 @@ CREATE TABLE relations
 );
 CREATE UNIQUE INDEX relations_unique_idx ON relations (follower_id, following_id);
 
-CREATE TABLE comments (
-  id          INTEGER   PRIMARY KEY DEFAULT nextval('global_seq'),
-  user_id     INTEGER   NOT NULL,
-  article_id  INTEGER   NOT NULL,
-  text        TEXT      NOT NULL,
-  date_time   TIMESTAMP DEFAULT now(),
-  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
-  FOREIGN KEY (article_id) REFERENCES articles (id) ON DELETE CASCADE
-);
+-- CREATE TABLE comments (
+--   id          INTEGER   PRIMARY KEY DEFAULT nextval('global_seq'),
+--   user_id     INTEGER   NOT NULL,
+--   article_id  INTEGER   NOT NULL,
+--   text        TEXT      NOT NULL,
+--   date_time   TIMESTAMP DEFAULT now(),
+--   FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+--   FOREIGN KEY (article_id) REFERENCES articles (id) ON DELETE CASCADE
+-- );

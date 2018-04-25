@@ -49,6 +49,10 @@
                         <input class="form-control mr-sm-2" type ="submit" value="Найти">
                     </form>
                     </p>
+                    <p></p>
+                    <p>
+                        <a href="/chat?userId=${authUserId}&interlocutorId=${user.id}" onclick="javascript:event.target.port=8090" target="_blank">Чат</a>
+                    </p>
                 </div>
             </div>
         </div>

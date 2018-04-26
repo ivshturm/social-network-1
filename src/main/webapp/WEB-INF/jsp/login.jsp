@@ -25,11 +25,11 @@
             <a class="btn btn-lg btn-primary" href="register">Регистрация &raquo;</a>
         </p>
 
-        <p>
-            <button type="submit" onclick="setCredentials('user@yandex.ru', 'password')">
-                Вход тестовым пользователем
-            </button>
-        </p>
+        <%--<p>--%>
+            <%--<button type="submit" onclick="setCredentials('user@yandex.ru', 'password')">--%>
+                <%--Вход тестовым пользователем--%>
+            <%--</button>--%>
+        <%--</p>--%>
 
         <br/>
     </div>

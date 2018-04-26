@@ -2,7 +2,6 @@ package ru.sberbank.project.model;
 
 import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
-import ru.sberbank.project.model.HasId;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -56,7 +55,7 @@ public class UserTo implements Serializable, HasId {
         this.email = email;
         this.password = password;
         this.birthdayDay = birthday.getDayOfMonth();
-        this.birthdayMonth = birthday.getDayOfMonth();
+        this.birthdayMonth = birthday.getMonthValue();
         this.birthdayYear = birthday.getYear();
     }
 

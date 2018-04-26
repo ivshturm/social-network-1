@@ -34,7 +34,7 @@ $(function () {
         ],
         "order": [
             [
-                2,
+                3,
                 "desc"
             ]
         ],

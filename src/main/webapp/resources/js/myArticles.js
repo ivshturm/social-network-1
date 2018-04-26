@@ -49,7 +49,7 @@ $(function () {
         ],
         "order": [
             [
-                1,
+                2,
                 "desc"
             ]
         ],

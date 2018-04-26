@@ -29,10 +29,10 @@
         <table class="table table-striped display" id="dataTable">
             <thead>
             <tr>
+                <th width="5%"></th>
                 <th width="20%">Пользователь</th>
                 <th width="55%">Название</th>
                 <th>Дата публикации</th>
-                <th>Смотреть</th>
             </tr>
             </thead>
         </table>

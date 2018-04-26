@@ -26,6 +26,11 @@ $(function () {
     dataTableApi = $('#dataTable').DataTable(extendsOpts({
         "columns": [
             {
+                "render": selectArticle,
+                "defaultContent": "",
+                "orderable": false
+            },
+            {
                 "data": "name"
             },
             {
@@ -40,11 +45,6 @@ $(function () {
                 "render": renderDeleteBtn,
                 "defaultContent": "",
                 "orderable": false
-            },
-            {
-                "render": selectArticle,
-                "defaultContent": "",
-                "orderable": false
             }
         ],
         "order": [
@@ -57,43 +57,6 @@ $(function () {
             $(row).addClass('item');
         }
     }));
-
-
-
-    $.datetimepicker.setLocale(localeCode);
-
-//  http://xdsoft.net/jqplugins/datetimepicker/
-    var startDate = $('#startDate');
-    var endDate = $('#endDate');
-    startDate.datetimepicker({
-        timepicker: false,
-        format: 'Y-m-d',
-        formatDate: 'Y-m-d',
-        onShow: function (ct) {
-            this.setOptions({
-                maxDate: endDate.val() ? endDate.val() : false
-            })
-        }
-    });
-    endDate.datetimepicker({
-        timepicker: false,
-        format: 'Y-m-d',
-        formatDate: 'Y-m-d',
-        onShow: function (ct) {
-            this.setOptions({
-                minDate: startDate.val() ? startDate.val() : false
-            })
-        }
-    });
-
-    $('#startTime, #endTime').datetimepicker({
-        datepicker: false,
-        format: 'H:i'
-    });
-
-    $('#dateTime').datetimepicker({
-        format: 'Y-m-d H:i'
-    });
 });
 
 function makeEditable() {
@@ -107,7 +70,7 @@ function makeEditable() {
     });
 }
 
-// https://api.jquery.com/jquery.extend/#jQuery-extend-deep-target-object1-objectN
+https://api.jquery.com/jquery.extend/#jQuery-extend-deep-target-object1-objectN
 function extendsOpts(opts) {
     $.extend(true, opts,
         {
@@ -174,14 +137,14 @@ function save() {
 function renderEditBtn(data, type, row) {
     if (type === "display") {
         return "<a onclick='updateRow(" + row.id + ");'>" +
-            "<span class='glyphicon glyphicon-pencil' aria-hidden='true'></span></a>";
+            "<span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>";
     }
 }
 
 function renderDeleteBtn(data, type, row) {
     if (type === "display") {
         return "<a onclick='deleteRow(" + row.id + ");'>" +
-            "<span class='glyphicon glyphicon-remove' aria-hidden='true'></span></a>";
+            "<span class='glyphicon glyphicon-trash' aria-hidden='true'></span></a>";
     }
 }
 

@@ -61,11 +61,11 @@
         <table class="table table-striped display" id="dataTable">
             <thead>
             <tr>
+                <th width="5%"></th>
                 <th width="55%">Название</th>
                 <th>Дата публикации</th>
                 <th>Редактировать</th>
                 <th>Удалить</th>
-                <th>Смотреть</th>
             </tr>
             </thead>
         </table>

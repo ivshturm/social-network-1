@@ -72,9 +72,9 @@
         <table class="table table-striped display" id="dataTable">
             <thead>
             <tr>
+                <th width="5%"></th>
                 <th width="75%">Название</th>
                 <th>Дата публикации</th>
-                <th>Смотреть</th>
             </tr>
             </thead>
         </table>
